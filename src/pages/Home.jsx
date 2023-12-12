@@ -5,14 +5,7 @@ import ManageTask from "../components/ManageTask";
 import { Box } from "@chakra-ui/react";
 
 function Home() {
-  return (
-    <SimpleGrid>
-      <Box display={"flex"} w="100%">
-        <MyTask />
-        <ManageTask />
-      </Box>
-    </SimpleGrid>
-  );
+  return <MyTask />;
 }
 
 export default Home;
