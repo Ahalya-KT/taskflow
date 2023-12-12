@@ -31,18 +31,23 @@ function MyTask() {
   ];
 
   return (
-    <Box gap={"8"} px={"6"} py={"10"} w="100%">
+    <Box gap={"8"} px={"6"} py={"10"} w="30%">
       <SimpleGrid
         columns={{ sm: 1, md: 2, lg: 3 }}
         display={"flex"}
         gap={"6"}
         pb={"5"}
         bg={"#F2ECFD"}
-        w="30%"
         flexDir="column"
         borderRadius={"8px"}
       >
-        <Box display={"flex"} justifyContent="space-between" py={"5"} px={"5"}>
+        <Box
+          display={"flex"}
+          gridColumn="span2"
+          justifyContent="space-between"
+          py={"5"}
+          px={"5"}
+        >
           <Text fontSize="lg" fontWeight="bold">
             My task
           </Text>
@@ -115,10 +120,12 @@ const Task = ({ title, index, status }) => (
       background={"#ffffff"}
     >
       <Box display={"flex"} justifyContent="space-between" gap={"5"} px={"5"}>
-        <Text>{index}</Text>
-        <Text>{title}</Text>
+        <Box display={"flex"} gap={3}>
+          <Text>{index}</Text>
+          <Text>{title}</Text>
+        </Box>
         <Box background={"yellow"} borderRadius={"full"} p={1}>
-          {status === "completed" ? <RxCross2 /> : <TiTick />}
+          {status === "Backlogs" ? <RxCross2 /> : <TiTick />}
         </Box>
       </Box>
     </Box>
