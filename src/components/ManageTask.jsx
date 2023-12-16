@@ -11,67 +11,75 @@ function ManageTask() {
     {
       progressValue: 20,
       progresstitle: "In PROGRESS",
-      icon: <PiEyeSlashFill size={25} />,
+      icon: <PiEyeSlashFill size={20} />,
     },
     {
       progressValue: 18,
       progresstitle: "COMPLETED",
-      icon: <TiTick size={25} />,
+      icon: <TiTick size={20} />,
     },
     {
       progressValue: 5,
       progresstitle: "BACKLOGS",
-      icon: <AiFillMessage size={25} />,
+      icon: <AiFillMessage size={20} />,
     },
   ];
 
   return (
-    <Box gridColumn={"span 2"} gridRow={"span 2"} px={6} py={10} bg={"#FFFBF0"} h>
+    <Box
+      gridColumn={"span 2"}
+      gridRow={"span 1"}
+      bg={"#FFFBF0"}
+      borderRadius={"10"}
+    >
+      {/* main section */}
       <Box>
-        {/* main section */}
-        <Box>
-          {/* head part */}
-          <Box display={"flex"} justifyContent="space-between">
-            <Text fontSize="lg" fontWeight="bold">
-              Manage Task
-            </Text>
-            <Box display={"flex"}>
-              <Text>View</Text>
-              <IoIosArrowRoundForward size={25} />
-            </Box>
+        {/* head part */}
+        <Box display={"flex"} justifyContent="space-between" px={"6"} py={"5"}>
+          <Text fontSize="lg" fontWeight="bold">
+            Manage Task
+          </Text>
+          <Box display={"flex"}>
+            <Text>View</Text>
+            <IoIosArrowRoundForward size={25} />
           </Box>
-          {/* mobile section */}
-          <Box py={"10"} display={"flex"} gap={10}>
-            <Box
-              py={"10"}
-              px={"7"}
-              bg={"#FFE499"}
-              w={"200px"}
-              borderRadius={"20px"}
-              h={"380px"}
-            >
-              <Text fontSize={"25"}>50%</Text>
-              <Text>To-do</Text>
-            </Box>
+        </Box>
+        {/* mobile section */}
+        <Box py={"10"} display={"flex"} gap={"3rem"}>
+          <Box
+            bg={"#FFE499"}
+            w={"200px"}
+            borderRadius={"20px"}
+            h={"380px"}
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="center"
+            marginLeft={"2rem"}
+          >
+            <Text fontSize={"25"} fontWeight={"bold"}>
+              50%
+            </Text>
+            <Text>To-do</Text>
+          </Box>
 
-            {/* section 2 */}
+          {/* section 2 */}
 
-            <Box
-              display={"flex"}
-              flexDirection={"column"}
-              gap={"4rem"}
-              justifyContent={"center"}
-            >
-              {progressDetails.map((data) => (
-                <Progress
-                  display={"flex"}
-                  gap={6}
-                  progressValue={data.progressValue}
-                  progresstitle={data.progresstitle}
-                  icon={data.icon}
-                />
-              ))}
-            </Box>
+          <Box
+            display={"flex"}
+            flexDirection={"column"}
+            gap={"4rem"}
+            justifyContent={"center"}
+          >
+            {progressDetails.map((data) => (
+              <Progress
+                display={"flex"}
+                gap={6}
+                progressValue={data.progressValue}
+                progresstitle={data.progresstitle}
+                icon={data.icon}
+              />
+            ))}
           </Box>
         </Box>
       </Box>
@@ -89,6 +97,8 @@ const Progress = ({ progressValue, progresstitle, icon }) => {
       display={"flex"}
       gap={10}
       spacing={4}
+      alignItems="center"
+      justifyContent="center"
     >
       <Text>{icon}</Text>
       <Box display={"flex"} flexDirection={"column"}>

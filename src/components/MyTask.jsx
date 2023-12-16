@@ -5,12 +5,16 @@ import { TiTick } from "react-icons/ti";
 import { RxCross2 } from "react-icons/rx";
 import ManageTask from "./ManageTask";
 import { FaArrowRight } from "react-icons/fa6";
+import imges from "../images/Ellipse 12.png";
+import { FaSearch } from "react-icons/fa";
+import { GoPlus } from "react-icons/go";
+import { IoMdSend } from "react-icons/io";
 
 function MyTask() {
-  const [isButtonClicked, setButtonClicked] = useState(false);
+  const [isButtonClicked, setButtonClicked] = useState(1);
 
-  const handleButtonClick = () => {
-    setButtonClicked(!isButtonClicked);
+  const handleButtonClick = (num) => {
+    setButtonClicked(num);
   };
 
   const officelist = [
@@ -61,9 +65,39 @@ function MyTask() {
     },
   ];
 
+  const EmployeeList = [
+    {
+      name: "mira toff",
+    },
+    {
+      name: "mira toff",
+    },
+    {
+      name: "mira toff",
+    },
+    {
+      name: "mira toff",
+    },
+    {
+      name: "mira toff",
+    },
+    {
+      name: "mira toff",
+    },
+    {
+      name: "mira toff",
+    },
+    {
+      name: "mira toff",
+    },
+    {
+      name: "mira toff",
+    },
+  ];
+
   return (
-    <SimpleGrid columns={[1, 1, 1, 4, 4, 4]}>
-      <Box gridColumn="span 1" gridRow={"span 2"} gap={"8"} px={"6"} h={"100"}>
+    <SimpleGrid columns={[1, 1, 1, 4, 4, 4]} gap={"1rem"}>
+      <Box gridColumn="span 1" gridRow={"span 1"} gap={"8"} px={"6"} h={"100"}>
         <Box
           display={"flex"}
           gap={"6"}
@@ -86,16 +120,17 @@ function MyTask() {
               <IoIosArrowRoundForward size={25} />
             </Box>
           </Box>
-
+          {/*  */}
           {taskList.map((items, index) => (
             <Task title={items.title} index={index} status={items.status} />
           ))}
 
           <Box
-            display={{ base: "table-column", md: "flex" }}
-            flexWrap={{ md: "nowrap" }}
-            gap={{ base: "0", md: "2" }}
-            whiteSpace={{ base: "normal", md: "nowrap" }}
+            // display={{ base: "table-column", md: "flex" }}
+            // flexWrap={{ md: "nowrap" }}
+            // gap={{ base: "0", md: "2" }}
+            // whiteSpace={{ base: "normal", md: "nowrap" }}
+            display={"flex"}
           >
             <Box px={"3"} display={"flex"}>
               <Text
@@ -104,7 +139,7 @@ function MyTask() {
                 w={"4"}
                 h={"4"}
               ></Text>
-              <Text> to-do</Text>
+              <Text whiteSpace="nowrap"> to-do</Text>
             </Box>
             <Box display={"flex"}>
               <Text
@@ -113,7 +148,7 @@ function MyTask() {
                 w={"4"}
                 h={"4"}
               ></Text>
-              <Text> in-progress</Text>
+              <Text whiteSpace="nowrap"> in-progress</Text>
             </Box>
             <Box display={"flex"}>
               <Text
@@ -166,7 +201,6 @@ function MyTask() {
               display={"flex"}
               gap={4}
               px={"10"}
-              py={"10"}
               border={"2px solid #e2e8f0"}
               borderRadius={"10"}
               bg={"#ffffff"}
@@ -175,30 +209,56 @@ function MyTask() {
               justifyContent={"center"}
             >
               <Box
-                onClick={handleButtonClick}
-                bg={isButtonClicked ? "blue.500" : "gray.200"}
-                color={isButtonClicked ? "white" : "black"}
+                onClick={() => handleButtonClick(1)}
+                bg={isButtonClicked === 1 ? "blue.500" : ""}
+                color={isButtonClicked === 1 ? "white" : "black"}
+                cursor={"pointer"}
               >
                 <Text>23</Text>
                 <Text>mon</Text>
               </Box>
-              <Box>
+              <Box
+                onClick={() => handleButtonClick(2)}
+                bg={isButtonClicked === 2 ? "blue.500" : ""}
+                color={isButtonClicked === 2 ? "white" : "black"}
+                cursor={"pointer"}
+              >
                 <Text>23</Text>
                 <Text>mon</Text>
               </Box>
-              <Box>
+              <Box
+                onClick={() => handleButtonClick(3)}
+                bg={isButtonClicked === 3 ? "blue.500" : ""}
+                color={isButtonClicked === 3 ? "white" : "black"}
+                cursor={"pointer"}
+              >
                 <Text>23</Text>
                 <Text>mon</Text>
               </Box>
-              <Box>
+              <Box
+                onClick={() => handleButtonClick(4)}
+                bg={isButtonClicked === 4 ? "blue.500" : ""}
+                color={isButtonClicked === 4 ? "white" : "black"}
+                cursor={"pointer"}
+              >
                 <Text>23</Text>
                 <Text>mon</Text>
               </Box>
-              <Box>
+              <Box
+                onClick={() => handleButtonClick(5)}
+                bg={isButtonClicked === 5 ? "blue.500" : ""}
+                color={isButtonClicked === 5 ? "white" : "black"}
+                cursor={"pointer"}
+              >
                 <Text>23</Text>
                 <Text>mon</Text>
               </Box>
-              <Box>
+              <Box
+                onClick={() => handleButtonClick(6)}
+                bg={isButtonClicked === 6 ? "blue.500" : ""}
+                color={isButtonClicked === 6 ? "white" : "black"}
+                cursor={"pointer"}
+              >
                 <Text>23</Text>
                 <Text>mon</Text>
               </Box>
@@ -216,14 +276,60 @@ function MyTask() {
           </Box>
         </Box>
       </Box>
-
-      <Box gridColumn={"span 3"}>
-        <Box px={"5"}>
-          <Text>Connect</Text>
+      {/* Box 4 */}
+      <Box
+        gridColumn={"span 3"}
+        bg={"#E8FFE7"}
+        p={"1rem"}
+        borderRadius={8}
+        mb={4}
+      >
+        <Box
+          display={"flex"}
+          justifyContent={"space-between"}
+          px={"5"}
+          py={"7"}
+        >
+          <Box px={"5"}>
+            <Text>Connect</Text>
+          </Box>
+          <Box display={"flex"} gap={1}>
+            <Text>Message</Text>
+            <FaArrowRight size={25} />
+          </Box>
         </Box>
-        <Box>
-          <img src=""/>
-          <Text>Hello</Text>
+        <Box display={"flex"} justifyContent={"center"} gap={7}>
+          {EmployeeList.map((data) => (
+            <EmployeeDetails name={data.name} image={data.image} />
+          ))}
+          <Box>
+            <FaSearch size={20} />
+          </Box>
+        </Box>
+
+        {/*input box  */}
+        <Box
+          border="1px solid #4B8049"
+          width={"full"}
+          p={"2"}
+          borderRadius={"6"}
+          bg={"#FFFFFF"}
+          mb={6}
+        >
+          <Box
+            display={"flex"}
+            justifyContent={"space-between"}
+            bg={"#E8FFE7"}
+            gap={7}
+          >
+            <Box>
+              <GoPlus size={20} />
+            </Box>
+            <Box>
+              <Text>Type Something</Text>
+            </Box>
+            <IoMdSend size={20} />
+          </Box>
         </Box>
       </Box>
     </SimpleGrid>
@@ -241,10 +347,10 @@ const Task = ({ title, index, status }) => (
       <Box display={"flex"} justifyContent="space-between" gap={"5"} px={"5"}>
         <Box display={"flex"} gap={3}>
           <Text>{index}</Text>
-          <Text>{title}</Text>
+          <Text whiteSpace={"nowrap"}>{title}</Text>
         </Box>
         <Box background={"yellow"} borderRadius={"full"} p={1}>
-          {status === "Backlogs" ? <RxCross2 /> : <TiTick />}
+          {status === "Backlogs" ? <RxCross2 /> :<TiTick /> }
         </Box>
       </Box>
     </Box>
@@ -264,6 +370,15 @@ const OfficeDetails = ({ title, time }) => (
       borderLeft="4px solid blue.500"
     >
       <Text>{title}</Text>
+    </Box>
+  </Box>
+);
+
+const EmployeeDetails = ({ name, img }) => (
+  <Box>
+    <Box>
+      <img src={imges} />
+      <Text>{name}</Text>
     </Box>
   </Box>
 );
