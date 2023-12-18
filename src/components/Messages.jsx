@@ -146,10 +146,11 @@ function Messages() {
               Software
             </Text>
             <Box display={"flex"} justifyContent={"space-between"}>
-              <Box display={"flex"}>
-                <Text fontSize={"0.6rem"}>Add</Text>
-                <MdAddCircle size={25} />
+              <Box display={"flex"} fontFamily="poppins" fontSize={"0.6rem"} alignItems={"center"}>
+                <Text fontSize={"0.8rem"}>Add</Text>
+                <MdAddCircle size={12} />
               </Box>
+
               <Box>
                 <IoIosHeartEmpty />
               </Box>

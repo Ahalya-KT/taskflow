@@ -18,12 +18,12 @@ export default function ImageUpload() {
     e.preventDefault();
     setIsDragActive(false);
 
-    const file = e.dataTransfer.files[0]; // Only consider the first dropped file
+    const file = e.dataTransfer.files[0]; 
     setSelectedFile(file);
   };
 
   const handleInputChange = (e) => {
-    const file = e.target.files[0]; // Only consider the first selected file
+    const file = e.target.files[0]; 
     setSelectedFile(file);
   };
 
@@ -68,18 +68,14 @@ export default function ImageUpload() {
         </Box>
       ) : (
         <Box>
-          <Center>
-            <Text fontSize="4xl" color="gray.400">
-              📁
-            </Text>
-          </Center>
+          <Center></Center>
           <Text fontSize="sm" color="gray.400" my={2}>
             {isDragActive
               ? "Drop the files here!"
-              : "Drag and drop files here or click to select"}
+              : "you can also drop your files here"}
           </Text>
           <Input
-            type="file"
+            id="file-input"
             display="none"
             onChange={handleInputChange}
             accept=".jpg, .jpeg, .png"
