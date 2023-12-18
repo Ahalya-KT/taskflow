@@ -9,6 +9,7 @@ import { TiTick } from "react-icons/ti";
 import { RxCross2 } from "react-icons/rx";
 import imges from "../images/Ellipse 12.png";
 
+  //  my taskpage
 function Taskflow() {
   const [buttonClicked, setButtonClicked] = useState(1);
   const handleButtonClicked = (num) => {
@@ -199,7 +200,7 @@ function Taskflow() {
               status={data.status}
               data={data}
               buttonClicked={buttonClicked}
-             handleButtonClicked={handleButtonClicked}
+              handleButtonClicked={handleButtonClicked}
             />
           ))}
         </Box>
@@ -245,7 +246,9 @@ function Taskflow() {
             borderBottom="1px solid"
           >
             <Box>
-              <Text py={2} fontWeight={600} fontSize={"16px"} color={"#0C2242"}>Time Schedule</Text>
+              <Text py={2} fontWeight={600} fontSize={"16px"} color={"#0C2242"}>
+                Time Schedule
+              </Text>
               <Text>
                 <span color="red">Start</span> :01 Nov 2023 9:00AM
               </Text>
@@ -255,7 +258,9 @@ function Taskflow() {
             </Box>
 
             <Box>
-              <Text py={2} color={"#0C2242"} fontWeight={600} fontSize={"16px"}>Assigners</Text>
+              <Text py={2} color={"#0C2242"} fontWeight={600} fontSize={"16px"}>
+                Assigners
+              </Text>
               <Box display={"flex"} gap={"1rem"}>
                 <Box>
                   <img src={imges} />
@@ -293,7 +298,9 @@ function Taskflow() {
             py={3}
           >
             <Box py={3}>
-              <Text fontWeight={600} fontSize={"16px"} color={"#0C2242"} >Subtask</Text>
+              <Text fontWeight={600} fontSize={"16px"} color={"#0C2242"}>
+                Subtask
+              </Text>
               <Text py={2}>
                 1 Clearly define the scope of the survey,including which topics
                 and areas it should cover
@@ -303,13 +310,13 @@ function Taskflow() {
                 paper-based or in-person
               </Text>
             </Box>
-            <Box   alignItems={"center"}  >
-            <Box backgroundColor="blue.500" borderRadius="md">
-            <TiTick size={20} color="#FFFFFF" />
-            </Box>
-            <Box backgroundColor="blue.500" borderRadius="md">
-             <TiTick size={20} color="#FFFFFF" />
-            </Box>
+            <Box alignItems={"center"}>
+              <Box backgroundColor="blue.500" borderRadius="md">
+                <TiTick size={20} color="#FFFFFF" />
+              </Box>
+              <Box backgroundColor="blue.500" borderRadius="md">
+                <TiTick size={20} color="#FFFFFF" />
+              </Box>
             </Box>
           </Box>
         </Box>
@@ -319,7 +326,6 @@ function Taskflow() {
 }
 //task details
 const TaskDetails = ({ data, buttonClicked, handleButtonClicked }) => {
- 
   return (
     <Box
       ml={"1rem"}
