@@ -8,15 +8,16 @@ import {
   list,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { FaArrowRightLong } from "react-icons/fa6";
 import { MdAddCircle } from "react-icons/md";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { Checkbox } from "@chakra-ui/react";
 import { Radio, RadioGroup, Stack } from "@chakra-ui/react";
-import { Textarea, Button } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 import ImageUpload from "./ImageUpload";
 import { TiTick } from "react-icons/ti";
+import { FaChevronRight } from "react-icons/fa6";
 import { RxCross2 } from "react-icons/rx";
+
 import {
   Popover,
   PopoverTrigger,
@@ -31,40 +32,80 @@ import {
 import imges from "../images/Ellipse 12.png";
 
 function Messages() {
+  const [selectedItem, setSelectedItem] = useState([]);
 
-  const [selectedItem, setSelectedItem] = useState({ name: null, img: null });
+  const [softwareSelection, setsoftwareSelection] = useState([]);
+
+  // function to delete a function
+  const deleteItem = (index, event) => {
+    event.stopPropagation();
+    const updatedList = [...selectedItem];
+    updatedList.splice(index, 1);
+    setSelectedItem(updatedList);
+  };
 
   const lists = [
     {
-      Name: "Erin Franci",
+      Name: "Erin France",
       img: "imges",
     },
     {
-      Name: "Erin Franci",
+      Name: "Erin France",
       img: "imges",
     },
     {
-      Name: "Erin Franci",
+      Name: "Erin France",
       img: "imges",
     },
     {
-      Name: "Erin Franci",
+      Name: "Erin France",
       img: "imges",
     },
     {
-      Name: "Erin Franci",
+      Name: "Erin France",
       img: "imges",
     },
     {
-      Name: "Erin Franci",
+      Name: "Erin France",
       img: "imges",
     },
     {
-      Name: "Erin Franci",
+      Name: "Erin France",
       img: "imges",
     },
   ];
+
   // array 2
+
+  const softwareList = [
+    {
+      names: "Mila france",
+    },
+    {
+      names: "Mila france",
+    },
+    {
+      names: "Mila france",
+    },
+    {
+      names: "Mila france",
+    },
+    {
+      names: "Mila france",
+    },
+    {
+      names: "Mila france",
+    },
+    {
+      names: "Mila france",
+    },
+    {
+      names: "Mila france",
+    },
+    {
+      names: "Mila france",
+    },
+  ];
 
   return (
     <SimpleGrid>
@@ -72,14 +113,14 @@ function Messages() {
         ml={"2rem"}
         py={"2rem"}
         display={"flex"}
-        gap={"2rem"}
+        gap={"1rem"}
         flexDir={{ sm: "column", md: "column", lg: "column", xl: "row" }}
       >
         {/* Box 1 */}
         <Box w="50%" boxShadow="md">
           <Box display="flex" py={"1rem"} ml={"1rem"} fontFamily="poppins">
             <Text>TaskFlow</Text>
-            <FaArrowRightLong size={12} />
+            <FaChevronRight size={18} />
             <Text>Schedule task</Text>
           </Box>
           <Box display="flex" justifyContent={"space-between"} gap={"2rem"}>
@@ -87,24 +128,26 @@ function Messages() {
             <Box ml={"1rem"}>
               <Box display={"flex"} fontFamily="poppins">
                 <FormControl>
-                  <FormLabel>Start Date</FormLabel>
+                  <FormLabel fontSize={"0.9rem"}>Start Date</FormLabel>
                   <Input
                     placeholder="Select Date and Time"
                     size="md"
                     type="date"
-                    fontSize={"0.9rem"}
+                    fontSize={"0.7rem"}
+                    w="200px"
                   />
                 </FormControl>
               </Box>
 
               <Box fontFamily="poppins">
                 <FormControl>
-                  <FormLabel>End Date</FormLabel>
+                  <FormLabel fontSize={"0.9rem"}>End Date</FormLabel>
                   <Input
                     placeholder="Select Date"
                     size="md"
                     type="date"
-                    fontSize={"0.9rem"}
+                    fontSize={"0.7rem"}
+                    w="200px"
                   />
                 </FormControl>
               </Box>
@@ -114,7 +157,7 @@ function Messages() {
             <Box ml={"1rem"}>
               <Box fontFamily="poppins" fontSize={"0.5rem"}>
                 <FormControl>
-                  <FormLabel>Start Time</FormLabel>
+                  <FormLabel fontSize={"0.9rem"}>Start Time</FormLabel>
                   <Input
                     type="time"
                     placeholder="9:00 AM"
@@ -126,13 +169,8 @@ function Messages() {
 
               <Box fontFamily="poppins" fontSize={"0.5rem"}>
                 <FormControl>
-                  <FormLabel>End Time</FormLabel>
-                  <Input
-                    type="time"
-                    placeholder="6:00 AM"
-                    width="300px"
-                    fontSize={"0.9rem"}
-                  />
+                  <FormLabel fontSize={"0.9rem"}>End Time</FormLabel>
+                  <Input type="time" placeholder="6:00 AM" width="300px" />
                 </FormControl>
               </Box>
             </Box>
@@ -158,7 +196,11 @@ function Messages() {
             <Box>
               <FormControl>
                 <FormLabel fontSize={"0.9rem"}>Task title</FormLabel>
-                <Input type="text" placeholder="Enter the title of your task" />
+                <Input
+                  type="text"
+                  placeholder="Enter the title of your task"
+                  fontSize={"0.7rem"}
+                />
               </FormControl>
             </Box>
 
@@ -173,8 +215,8 @@ function Messages() {
 
         {/* box2 */}
         {/* select department */}
-        <Box ml={"2rem"} fontFamily="poppins">
-          <Text py={"1rem"} fontSize={"0.9rem"}>
+        <Box ml={"2rem"} fontFamily="poppins" boxShadow={"md"}>
+          <Text py={"1rem"} fontSize={"0.9rem"} px={"1rem"}>
             Select Department
           </Text>
           <Box
@@ -183,22 +225,37 @@ function Messages() {
             border="1px solid #ccc"
             width="600px"
             p={2}
+            ml={"1rem"}
           >
             <Box display={"flex"}>
               <Box display={"flex"}>
-                <Text
-                  fontFamily="poppins"
-                  fontSize={"0.6rem"}
-                  bg={"seashell"}
-                  borderRadius="md"
-                  borderWidth="1px"
-                  p={1}
-                >
-                  Software
-                  {/* <Box>
-                <RxCross2 size={12}/>
-              </Box> */}
-                </Text>
+                <Popover>
+                  <PopoverTrigger>
+                    <Box>
+                      {softwareSelection.map((data) => (
+                        <Text key={data.names}>{data.names}</Text>
+                      ))}
+                    </Box>
+                    
+                  </PopoverTrigger>
+
+                  <PopoverContent>
+                    <PopoverArrow />
+                    <PopoverCloseButton />
+                    <PopoverHeader></PopoverHeader>
+
+                    <PopoverBody>
+                      <Box
+                      >
+                        {softwareList.map((item) => (
+                          <Text  onClick={() =>
+                            setsoftwareSelection([...softwareSelection, item])
+                          }>{item.names}</Text>
+                        ))}
+                      </Box>
+                    </PopoverBody>
+                  </PopoverContent>
+                </Popover>
               </Box>
             </Box>
             <Box display={"flex"} justifyContent={"space-between"}>
@@ -208,17 +265,17 @@ function Messages() {
                 fontSize={"0.6rem"}
                 alignItems={"center"}
               >
-                <Text fontSize={"0.8rem"}>Add</Text>
+                <Text fontSize={"0.7rem"}>Add</Text>
                 <MdAddCircle size={12} />
               </Box>
 
-              <Box>
+              {/* <Box>
                 <IoIosHeartEmpty />
-              </Box>
+              </Box> */}
             </Box>
           </Box>
 
-          <Box py={"2"}>
+          <Box py={"2"} px={"1rem"}>
             {/* Assign to */}
             <Text py={"1rem"} fontSize={"0.9rem"}>
               Assign To
@@ -236,67 +293,56 @@ function Messages() {
                   p={2}
                   fontSize={"0.6rem"}
                   cursor={"pointer"}
+                  height="50px"
+                  overflow="hidden"
                 >
-                  <Text
-                    bg={"seashell"}
-                    borderRadius="md"
-                    borderWidth="1px"
-                    p={1}
-                  >
-                    <Box py={"1rem"}>
-                      {/* Display selected name and image in a box */}
-                      {selectedItem.name && (
-                        <Box
-                          bg={"seashell"}
-                          borderRadius="md"
-                          borderWidth="1px"
-                        >
-                          <img
-                            src={selectedItem.imges}
-                            alt={selectedItem.name}
-                            width="20"
-                            height="20"
-                          />
-                          {selectedItem.name}
-                        </Box>
-                      )}
+                  {selectedItem.map((data, index) => (
+                    <Box
+                      bg={"lavender"}
+                      p={1}
+                      borderRadius={"md"}
+                      display={"flex"}
+                      gap={"0.6rem"}
+                    >
+                      <Text>{data.Name}</Text>
+                      <img src={data.imges} width="20" height="20" />
+                      <Box bg={"lavender"} borderRadius={"full"} p={1}>
+                        <RxCross2
+                          size={10}
+                          onClick={(event) => deleteItem(index, event)}
+                        />
+                      </Box>
+                      <Box>
+                        {/* Display selected name and image in a box */}
+                        {selectedItem.name && (
+                          <Box
+                            bg={"seashell"}
+                            borderRadius="md"
+                            borderWidth="1px"
+                          >
+                            <img
+                              src={selectedItem.img}
+                              alt={selectedItem.name}
+                              width="20"
+                              height="20"
+                            />
+                            {selectedItem.name}
+                          </Box>
+                        )}
+                      </Box>
                     </Box>
-                  </Text>
-                  <Text
-                    bg={"seashell"}
-                    borderRadius="md"
-                    borderWidth="1px"
-                    p={1}
-                  ></Text>
-                  <Text
-                    bg={"seashell"}
-                    borderRadius="md"
-                    borderWidth="1px"
-                    p={1}
-                  >
-                    Nolam Kenter
-                  </Text>
-                  <Text
-                    bg={"seashell"}
-                    borderRadius="md"
-                    borderWidth="1px"
-                    p={1}
-                  >
-                    Nolam Kenter
-                  </Text>
+                  ))}
                 </Box>
               </PopoverTrigger>
               <PopoverContent maxW="xl">
                 <PopoverArrow />
                 <PopoverCloseButton />
-                <PopoverHeader></PopoverHeader>
+                <PopoverHeader w="10px"></PopoverHeader>
                 {lists.map((items) => (
                   <PopoverBody
                     display={"flex"}
                     justifyContent={"space-between"}
-                    onClick={() =>
-                      setSelectedItem({ name: items.Name, img: items.imges })
-                    }
+                    onClick={() => setSelectedItem([...selectedItem, items])}
                     key={items.Name}
                   >
                     <Box display={"flex"}>
@@ -312,24 +358,30 @@ function Messages() {
             </Popover>
           </Box>
           {/* check box */}
-          <Box fontFamily="poppins" fontSize={"0.6rem"}>
-            <Checkbox defaultChecked fontSize={"0.7rem"}>
-              Assgin this task to myself
+          <Box fontFamily="poppins" display={"flex"} px={"1rem"}>
+            <Checkbox defaultChecked>
+              <Text fontSize={"0.7rem"}>Assgin this task to myself</Text>
             </Checkbox>
           </Box>
 
           {/* radio box */}
-          <Box py={"2rem"}>
+          <Box py={"2rem"} px={"1rem"}>
             <RadioGroup defaultValue="1">
               <Stack spacing={4} direction="row">
-                <Radio value="1">Low</Radio>
-                <Radio value="2">Medium</Radio>
-                <Radio value="3">High</Radio>
+                <Radio value="1">
+                  <Text fontSize="0.7rem">Low</Text>
+                </Radio>
+                <Radio value="2" fontSize="0.7rem">
+                  <Text fontSize="0.7rem">Medium</Text>
+                </Radio>
+                <Radio value="3" fontSize="0.7rem">
+                  <Text fontSize="0.7rem">High</Text>
+                </Radio>
               </Stack>
             </RadioGroup>
           </Box>
           {/* Add attachment */}
-          <Box>
+          <Box px={"1rem"}>
             <Text fontSize={"0.9rem"}>Add Attachment</Text>
             <Box py={"2rem"}>
               <Input placeholder="" />
@@ -342,7 +394,11 @@ function Messages() {
             {/* button */}
             <Box py={"2rem"} display="flex" justifyContent="flex-end">
               <Stack direction="row" spacing={4}>
-                <Button colorScheme="teal" variant="outline">
+                <Button
+                  colorScheme="teal"
+                  variant="outline"
+                  fontSize={"0.9rem"}
+                >
                   Cancel
                 </Button>
 

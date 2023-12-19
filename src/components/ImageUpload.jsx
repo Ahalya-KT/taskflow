@@ -49,8 +49,8 @@ export default function ImageUpload() {
               <img
                 src={URL.createObjectURL(selectedFile)}
                 alt={selectedFile.name}
-                className="object-cover w-50% h-50% rounded"
-                style={{ maxWidth: "100%", maxHeight: "100%" }}
+                className="object-cover w-20% h-50% rounded"
+                style={{ Width: "50%", Height: "50%" }}
               />
             ) : (
               <Box w="20" h="20" bg="gray.100" />
