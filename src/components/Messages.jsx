@@ -5,8 +5,9 @@ import {
   Input,
   FormControl,
   FormLabel,
+  list,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { MdAddCircle } from "react-icons/md";
 import { IoIosHeartEmpty } from "react-icons/io";
@@ -15,8 +16,56 @@ import { Radio, RadioGroup, Stack } from "@chakra-ui/react";
 import { Textarea, Button } from "@chakra-ui/react";
 import ImageUpload from "./ImageUpload";
 import { TiTick } from "react-icons/ti";
+import { RxCross2 } from "react-icons/rx";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverHeader,
+  PopoverBody,
+  PopoverFooter,
+  PopoverArrow,
+  PopoverCloseButton,
+  PopoverAnchor,
+} from "@chakra-ui/react";
+import imges from "../images/Ellipse 12.png";
 
 function Messages() {
+
+  const [selectedItem, setSelectedItem] = useState({ name: null, img: null });
+
+  const lists = [
+    {
+      Name: "Erin Franci",
+      img: "imges",
+    },
+    {
+      Name: "Erin Franci",
+      img: "imges",
+    },
+    {
+      Name: "Erin Franci",
+      img: "imges",
+    },
+    {
+      Name: "Erin Franci",
+      img: "imges",
+    },
+    {
+      Name: "Erin Franci",
+      img: "imges",
+    },
+    {
+      Name: "Erin Franci",
+      img: "imges",
+    },
+    {
+      Name: "Erin Franci",
+      img: "imges",
+    },
+  ];
+  // array 2
+
   return (
     <SimpleGrid>
       <Box
@@ -97,7 +146,7 @@ function Messages() {
               <Text
                 alignItems={"center"}
                 fontFamily="poppins"
-                fontSize={"0.8rem"}
+                fontSize={"0.7rem"}
               >
                 This Task is Scheduled to begin from 9:30 am on 3rd of oct 2023
                 to 6:00 pm to 10 of oct 2023
@@ -108,14 +157,14 @@ function Messages() {
           <Box py={"3rem"} ml={"1rem"}>
             <Box>
               <FormControl>
-                <FormLabel>Task title</FormLabel>
+                <FormLabel fontSize={"0.9rem"}>Task title</FormLabel>
                 <Input type="text" placeholder="Enter the title of your task" />
               </FormControl>
             </Box>
 
             <Box py={"1rem"} fontFamily="poppins">
               <FormControl>
-                <FormLabel>Task Description</FormLabel>
+                <FormLabel fontSize={"0.9rem"}>Task Description</FormLabel>
                 <Input type="text" height="50px" />
               </FormControl>
             </Box>
@@ -125,7 +174,7 @@ function Messages() {
         {/* box2 */}
         {/* select department */}
         <Box ml={"2rem"} fontFamily="poppins">
-          <Text py={"1rem"} fontSize={"1rem"}>
+          <Text py={"1rem"} fontSize={"0.9rem"}>
             Select Department
           </Text>
           <Box
@@ -135,18 +184,30 @@ function Messages() {
             width="600px"
             p={2}
           >
-            <Text
-              fontFamily="poppins"
-              fontSize={"0.6rem"}
-              bg={"seashell"}
-              borderRadius="md"
-              borderWidth="1px"
-              p={1}
-            >
-              Software
-            </Text>
+            <Box display={"flex"}>
+              <Box display={"flex"}>
+                <Text
+                  fontFamily="poppins"
+                  fontSize={"0.6rem"}
+                  bg={"seashell"}
+                  borderRadius="md"
+                  borderWidth="1px"
+                  p={1}
+                >
+                  Software
+                  {/* <Box>
+                <RxCross2 size={12}/>
+              </Box> */}
+                </Text>
+              </Box>
+            </Box>
             <Box display={"flex"} justifyContent={"space-between"}>
-              <Box display={"flex"} fontFamily="poppins" fontSize={"0.6rem"} alignItems={"center"}>
+              <Box
+                display={"flex"}
+                fontFamily="poppins"
+                fontSize={"0.6rem"}
+                alignItems={"center"}
+              >
                 <Text fontSize={"0.8rem"}>Add</Text>
                 <MdAddCircle size={12} />
               </Box>
@@ -159,35 +220,102 @@ function Messages() {
 
           <Box py={"2"}>
             {/* Assign to */}
-            <Text py={"1rem"} fontSize={"1rem"}>
+            <Text py={"1rem"} fontSize={"0.9rem"}>
               Assign To
             </Text>
-            <Box
-              display={"flex"}
-              pt={3}
-              gap={"1rem"}
-              border="1px solid #ccc"
-              width="600px"
-              p={2}
-              fontSize={"0.6rem"}
-            >
-              <Text bg={"seashell"} borderRadius="md" borderWidth="1px" p={1}>
-                Nolam Kenter
-              </Text>
-              <Text bg={"seashell"} borderRadius="md" borderWidth="1px" p={1}>
-                Nolam Kenter
-              </Text>
-              <Text bg={"seashell"} borderRadius="md" borderWidth="1px" p={1}>
-                Nolam Kenter
-              </Text>
-              <Text bg={"seashell"} borderRadius="md" borderWidth="1px" p={1}>
-                Nolam Kenter
-              </Text>
-            </Box>
+
+            {/* modal */}
+            <Popover w="100">
+              <PopoverTrigger>
+                <Box
+                  display={"flex"}
+                  pt={3}
+                  gap={"1rem"}
+                  border="1px solid #ccc"
+                  width="600px"
+                  p={2}
+                  fontSize={"0.6rem"}
+                  cursor={"pointer"}
+                >
+                  <Text
+                    bg={"seashell"}
+                    borderRadius="md"
+                    borderWidth="1px"
+                    p={1}
+                  >
+                    <Box py={"1rem"}>
+                      {/* Display selected name and image in a box */}
+                      {selectedItem.name && (
+                        <Box
+                          bg={"seashell"}
+                          borderRadius="md"
+                          borderWidth="1px"
+                        >
+                          <img
+                            src={selectedItem.imges}
+                            alt={selectedItem.name}
+                            width="20"
+                            height="20"
+                          />
+                          {selectedItem.name}
+                        </Box>
+                      )}
+                    </Box>
+                  </Text>
+                  <Text
+                    bg={"seashell"}
+                    borderRadius="md"
+                    borderWidth="1px"
+                    p={1}
+                  ></Text>
+                  <Text
+                    bg={"seashell"}
+                    borderRadius="md"
+                    borderWidth="1px"
+                    p={1}
+                  >
+                    Nolam Kenter
+                  </Text>
+                  <Text
+                    bg={"seashell"}
+                    borderRadius="md"
+                    borderWidth="1px"
+                    p={1}
+                  >
+                    Nolam Kenter
+                  </Text>
+                </Box>
+              </PopoverTrigger>
+              <PopoverContent maxW="xl">
+                <PopoverArrow />
+                <PopoverCloseButton />
+                <PopoverHeader></PopoverHeader>
+                {lists.map((items) => (
+                  <PopoverBody
+                    display={"flex"}
+                    justifyContent={"space-between"}
+                    onClick={() =>
+                      setSelectedItem({ name: items.Name, img: items.imges })
+                    }
+                    key={items.Name}
+                  >
+                    <Box display={"flex"}>
+                      <img src={imges} width="20" height="20" />
+                      <Text fontSize={"0.9rem"}>{items.Name}</Text>
+                    </Box>
+                    <Box>
+                      <text fontSize={"0.5rem"}>Select</text>
+                    </Box>
+                  </PopoverBody>
+                ))}
+              </PopoverContent>
+            </Popover>
           </Box>
           {/* check box */}
           <Box fontFamily="poppins" fontSize={"0.6rem"}>
-            <Checkbox defaultChecked>Assgin this task to myself</Checkbox>
+            <Checkbox defaultChecked fontSize={"0.7rem"}>
+              Assgin this task to myself
+            </Checkbox>
           </Box>
 
           {/* radio box */}
@@ -202,14 +330,12 @@ function Messages() {
           </Box>
           {/* Add attachment */}
           <Box>
-            <Text fontSize={"1rem"}>Add Attachment</Text>
+            <Text fontSize={"0.9rem"}>Add Attachment</Text>
             <Box py={"2rem"}>
               <Input placeholder="" />
             </Box>
-            {/* upload */}
+            {/* file upload */}
             <Box>
-              {/* <Textarea placeholder="You can also drop the files here" /> */}
-
               <ImageUpload onChange={() => {}} />
             </Box>
 

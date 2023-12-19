@@ -18,12 +18,12 @@ export default function ImageUpload() {
     e.preventDefault();
     setIsDragActive(false);
 
-    const file = e.dataTransfer.files[0]; 
+    const file = e.dataTransfer.files[0];
     setSelectedFile(file);
   };
 
   const handleInputChange = (e) => {
-    const file = e.target.files[0]; 
+    const file = e.target.files[0];
     setSelectedFile(file);
   };
 
@@ -35,7 +35,7 @@ export default function ImageUpload() {
       border="2px dashed"
       borderColor={isDragActive ? "teal.500" : "gray.300"}
       borderRadius="md"
-      p={8}
+      p={5}
       textAlign="center"
       onDragEnter={handleDragEnter}
       onDragLeave={handleDragLeave}
@@ -49,7 +49,8 @@ export default function ImageUpload() {
               <img
                 src={URL.createObjectURL(selectedFile)}
                 alt={selectedFile.name}
-                className="object-cover w-full h-full rounded"
+                className="object-cover w-50% h-50% rounded"
+                style={{ maxWidth: "100%", maxHeight: "100%" }}
               />
             ) : (
               <Box w="20" h="20" bg="gray.100" />
@@ -72,10 +73,11 @@ export default function ImageUpload() {
           <Text fontSize="sm" color="gray.400" my={2}>
             {isDragActive
               ? "Drop the files here!"
-              : "you can also drop your files here"}
+              : "Drag and drop files here or click to select"}
           </Text>
           <Input
             id="file-input"
+            type="file"
             display="none"
             onChange={handleInputChange}
             accept=".jpg, .jpeg, .png"
