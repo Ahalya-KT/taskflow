@@ -44,6 +44,13 @@ function Messages() {
     setSelectedItem(updatedList);
   };
 
+  const deleteSoftwareItem = (index, event) => {
+    event.stopPropagation();
+    const updatedList = [...softwareSelection];
+    updatedList.splice(index, 1);
+    setsoftwareSelection(updatedList);
+  };
+
   const lists = [
     {
       Name: "Erin France",
@@ -219,60 +226,79 @@ function Messages() {
           <Text py={"1rem"} fontSize={"0.9rem"} px={"1rem"}>
             Select Department
           </Text>
-          <Box
-            display={"flex"}
-            gap={"1rem"}
-            border="1px solid #ccc"
-            width="600px"
-            p={2}
-            ml={"1rem"}
-          >
+
+          <Box display={"flex"}>
             <Box display={"flex"}>
-              <Box display={"flex"}>
-                <Popover>
-                  <PopoverTrigger>
-                    <Box>
-                      {softwareSelection.map((data) => (
-                        <Text key={data.names}>{data.names}</Text>
-                      ))}
-                    </Box>
-                    
-                  </PopoverTrigger>
-
-                  <PopoverContent>
-                    <PopoverArrow />
-                    <PopoverCloseButton />
-                    <PopoverHeader></PopoverHeader>
-
-                    <PopoverBody>
+              <Popover>
+                <PopoverTrigger>
+                  <Box
+                    display={"flex"}
+                    gap={"1rem"}
+                    border="1px solid #ccc"
+                    width="600px"
+                    p={1}
+                    ml={"1rem"}
+                    overflow="hidden"
+                  >
+                    {softwareSelection.map((data, index) => (
                       <Box
+                        display={"flex"}
+                        bg={"lavender"}
+                        borderRadius={"2rem"}
+                        alignItems={"center"}
                       >
-                        {softwareList.map((item) => (
-                          <Text  onClick={() =>
-                            setsoftwareSelection([...softwareSelection, item])
-                          }>{item.names}</Text>
-                        ))}
-                      </Box>
-                    </PopoverBody>
-                  </PopoverContent>
-                </Popover>
-              </Box>
-            </Box>
-            <Box display={"flex"} justifyContent={"space-between"}>
-              <Box
-                display={"flex"}
-                fontFamily="poppins"
-                fontSize={"0.6rem"}
-                alignItems={"center"}
-              >
-                <Text fontSize={"0.7rem"}>Add</Text>
-                <MdAddCircle size={12} />
-              </Box>
+                        <Box key={index} fontSize={"0.7rem"} p={1}>
+                          {data.names}
+                        </Box>
 
-              {/* <Box>
+                        <Box >
+                          <RxCross2
+                            size={15}
+                            onClick={(event) =>
+                              deleteSoftwareItem(index, event)
+                            }
+                          />
+                        </Box>
+                      </Box>
+                    ))}
+                    <Box
+                      display={"flex"}
+                      fontFamily="poppins"
+                      fontSize={"0.6rem"}
+                      alignItems={"center"}
+                    >
+                      <Text fontSize={"0.7rem"}>Add</Text>
+                      <MdAddCircle size={12} />
+                    </Box>
+                  </Box>
+                </PopoverTrigger>
+
+                <PopoverContent>
+                  <PopoverArrow />
+                  <PopoverCloseButton />
+                  <PopoverHeader></PopoverHeader>
+
+                  <Box>
+                    <PopoverBody>
+                      {softwareList.map((item) => (
+                        <Text
+                          onClick={() =>
+                            setsoftwareSelection([...softwareSelection, item])
+                          }
+                        >
+                          {item.names}
+                        </Text>
+                      ))}
+                    </PopoverBody>
+                  </Box>
+                </PopoverContent>
+              </Popover>
+            </Box>
+          </Box>
+          <Box display={"flex"} justifyContent={"space-between"}>
+            {/* <Box>
                 <IoIosHeartEmpty />
               </Box> */}
-            </Box>
           </Box>
 
           <Box py={"2"} px={"1rem"}>
@@ -311,24 +337,6 @@ function Messages() {
                           size={10}
                           onClick={(event) => deleteItem(index, event)}
                         />
-                      </Box>
-                      <Box>
-                        {/* Display selected name and image in a box */}
-                        {selectedItem.name && (
-                          <Box
-                            bg={"seashell"}
-                            borderRadius="md"
-                            borderWidth="1px"
-                          >
-                            <img
-                              src={selectedItem.img}
-                              alt={selectedItem.name}
-                              width="20"
-                              height="20"
-                            />
-                            {selectedItem.name}
-                          </Box>
-                        )}
                       </Box>
                     </Box>
                   ))}

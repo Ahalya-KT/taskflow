@@ -9,7 +9,7 @@ import { TiTick } from "react-icons/ti";
 import { RxCross2 } from "react-icons/rx";
 import imges from "../images/Ellipse 12.png";
 
-  //  my taskpage
+//  my taskpage
 function Taskflow() {
   const [buttonClicked, setButtonClicked] = useState(1);
   const handleButtonClicked = (num) => {
@@ -217,17 +217,17 @@ function Taskflow() {
             <Box bg={"#9AD894"} w="5" h="5" borderRadius={"md"}>
               <TiTick size={20} />
             </Box>
-            <Text fontWeight={500} fontSize={"15px"}>
+            <Text fontWeight={500} fontSize={"0.9rem"}>
               Prepare a Presenation for the upcoming meetings
             </Text>
           </Box>
 
           {/* div 2 */}
           <Box ml={"2rem"} py={2} borderBottom="1px solid">
-            <Text py={3} color={"#0C2242"} fontWeight={600} fontSize={"20px"}>
+            <Text py={3} color={"#0C2242"} fontWeight={600} fontSize={"0.9rem"}>
               Description
             </Text>
-            <Text py={2} fontWeight={400} fontSize={"16px"}>
+            <Text py={2} fontWeight={400} fontSize={"0.7rem"}>
               The task is to create a well structured and engaging Presenation
               for the upcoming meeting.This presentation serves as a medium to
               effectively communicate important information proposals,findings
@@ -246,22 +246,22 @@ function Taskflow() {
             borderBottom="1px solid"
           >
             <Box>
-              <Text py={2} fontWeight={600} fontSize={"16px"} color={"#0C2242"}>
+              <Text py={2} fontWeight={600} fontSize={"0.9rem"} color={"#0C2242"}>
                 Time Schedule
               </Text>
-              <Text>
-                <span color="red">Start</span> :01 Nov 2023 9:00AM
+              <Text fontSize={"0.7rem"}t>
+                <span color="red" >Start</span> :01 Nov 2023 9:00AM
               </Text>
-              <Text>
-                <span color="green">End</span> :15 Nov 2023 6:00AM
+              <Text fontSize={"0.7rem"}>
+                <span color="green" fontSize={"0.7rem"}>End</span> :15 Nov 2023 6:00AM
               </Text>
             </Box>
 
             <Box>
-              <Text py={2} color={"#0C2242"} fontWeight={600} fontSize={"16px"}>
+              <Text py={2} color={"#0C2242"} fontWeight={600} fontSize={"0.9rem"}>
                 Assigners
               </Text>
-              <Box display={"flex"} gap={"1rem"}>
+              <Box display={"flex"} gap={"1rem"} fontSize={"0.7rem"}>
                 <Box>
                   <img src={imges} />
                   <Text>Daniel</Text>
@@ -298,14 +298,14 @@ function Taskflow() {
             py={3}
           >
             <Box py={3}>
-              <Text fontWeight={600} fontSize={"16px"} color={"#0C2242"}>
+              <Text fontWeight={600} fontSize={"0.9rem"} color={"#0C2242"}>
                 Subtask
               </Text>
-              <Text py={2}>
+              <Text py={2} fontSize={"0.7rem"}>
                 1 Clearly define the scope of the survey,including which topics
                 and areas it should cover
               </Text>
-              <Text>
+              <Text fontSize={"0.7rem"}>
                 2 Choose the method of survey adminstration,whether it's online
                 paper-based or in-person
               </Text>
